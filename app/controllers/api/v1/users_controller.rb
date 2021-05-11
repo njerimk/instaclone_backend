@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::V1::UsersController < ApplicationController 
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   # POST /users
-  def create
+  def login
     @user = User.new(user_params)
 
     if @user.save
@@ -46,6 +46,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :full_name, :username, :password)
+      params.require(:user).permit(:email, :full_name, :username, :password, :followers, :followed, :likes, :comments)
     end
 end

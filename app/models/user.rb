@@ -8,4 +8,15 @@ class User < ApplicationRecord
     has_many :comments, as: :commentable
     
     has_many :posts
+    has_many :likes
+
+    before_create :slugify
+
+    def slugify
+        self.slug = username.parameterize
+    end
+
+
+  
+    
 end

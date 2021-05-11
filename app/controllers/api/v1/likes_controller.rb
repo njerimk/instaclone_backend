@@ -1,4 +1,4 @@
-class LikesController < ApplicationController
+class Api::V1::LikesController < ApplicationController
   before_action :set_like, only: [:show, :update, :destroy]
 
   # GET /likes
@@ -24,14 +24,14 @@ class LikesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /likes/1
-  def update
-    if @like.update(like_params)
-      render json: @like
-    else
-      render json: @like.errors, status: :unprocessable_entity
-    end
-  end
+  # # PATCH/PUT /likes/1
+  # def update
+  #   if @like.update(like_params)
+  #     render json: @like
+  #   else
+  #     render json: @like.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /likes/1
   def destroy
@@ -46,6 +46,6 @@ class LikesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def like_params
-      params.require(:like).permit(:user_id, :post_id)
+      params.require(:like).permit(:id, :user, :post)
     end
 end
